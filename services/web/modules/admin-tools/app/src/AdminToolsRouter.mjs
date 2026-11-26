@@ -1,4 +1,5 @@
 import logger from '@overleaf/logger'
+import ActiveProjectsController from './ActiveProjectsController.mjs'
 import AuthenticationController from '../../../../app/src/Features/Authentication/AuthenticationController.mjs'
 import AuthorizationMiddleware from '../../../../app/src/Features/Authorization/AuthorizationMiddleware.mjs'
 import AdminProjectController from './AdminProjectController.mjs'
@@ -146,6 +147,15 @@ export default {
       '/admin/project/:projectId/purge',
       admin,
       AdminProjectController.purgeDeletedProject
+    )
+
+    webRouter.get('/admin/active-projects',
+      AuthorizationMiddleware.ensureUserIsSiteAdmin,
+      ActiveProjectsController.activeProjectsPage,
+    )
+    webRouter.post('/admin/active-projects/list',
+      AuthorizationMiddleware.ensureUserIsSiteAdmin,
+      ActiveProjectsController.listActiveProjects,
     )
   },
 }
