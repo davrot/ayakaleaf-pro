@@ -75,7 +75,7 @@ build-pandoc:
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
 	  --progress=plain \
 	  --build-arg OVERLEAF_BASE_TAG \
-	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION)" \
 	  --cache-from $(OVERLEAF_PNG2PDF) \
 	  --file Dockerfile-png2pdf \
 	  --tag $(OVERLEAF_PNG2PDF) \
@@ -85,7 +85,7 @@ build-pandoc:
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
 	  --progress=plain \
 	  --pull \
-	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION)" \
 	  --file Dockerfile-pandoc \
 	  --tag $(OVERLEAF_PANDOC_TAG) \
 	  $(MONOREPO_ROOT)
@@ -97,7 +97,7 @@ build-git-bridge:
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
 	  --progress=plain \
 	  --pull \
-	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION)" \
 	  --file $(GITBRIDGE_DIR)/Dockerfile \
 	  --tag $(OVERLEAF_GITBRIDGE_TAG) \
 	  $(GITBRIDGE_DIR)
