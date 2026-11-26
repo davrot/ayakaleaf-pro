@@ -121,7 +121,7 @@ build-grammar-llm:
 	  --cache-from $(GRAMMAR_LLM_LATEST) \
 	  --cache-from $(GRAMMAR_LLM_BRANCH) \
 	  --file $(MONOREPO_ROOT)tools/containers/grammar-llm/Dockerfile \
-	  --label "com.grammar-llm.revision=$(MONOREPO_REVISION) \
+	  --label "com.grammar-llm.revision=$(MONOREPO_REVISION)" \
 	  --tag $(GRAMMAR_LLM_TAG) \
 	  --tag $(GRAMMAR_LLM_BRANCH) \
 	  --tag $(GRAMMAR_LLM_LATEST) \
