@@ -2,6 +2,9 @@
 
 MONOREPO_ROOT := ../
 HERE=$(shell pwd)
+# git-bridge is a self-contained multi-stage build living in its service dir;
+# its build context (and .dockerignore) is there, not the monorepo root.
+GITBRIDGE_DIR := $(MONOREPO_ROOT)services/git-bridge
 export MONOREPO_REVISION := $(shell git rev-parse HEAD)
 export BRANCH_NAME ?= $(shell git rev-parse --abbrev-ref HEAD)
 export BRANCH_NAME_TAG_SAFE ?= $(subst /,--,$(BRANCH_NAME))
@@ -15,9 +18,11 @@ export GRAMMAR_LLM_LATEST ?= grammar-llm
 export GRAMMAR_LLM_BRANCH ?= grammar-llm:$(BRANCH_NAME_TAG_SAFE)
 export GRAMMAR_LLM_TAG ?= grammar-llm:$(BRANCH_NAME_TAG_SAFE)-$(MONOREPO_REVISION)
 export OVERLEAF_PNG2PDF ?= sharelatex/png2pdf:2026-06-24
-all: build-base build-community build-grammar-llm build-png2pdf
+export OVERLEAF_PANDOC_TAG ?= sharelatex/sharelatex-pandoc:local
+export OVERLEAF_GITBRIDGE_TAG ?= sharelatex/git-bridge:latest
+all: build-base build-community build-grammar-llm build-png2pdf build-pandoc build-git-bridge
 clean:
-	-docker rmi --force $(OVERLEAF_BASE_TAG) $(OVERLEAF_TAG) $(GRAMMAR_LLM_TAG) $(OVERLEAF_PNG2PDF)
+	-docker rmi --force $(OVERLEAF_BASE_TAG) $(OVERLEAF_TAG) $(GRAMMAR_LLM_TAG) $(OVERLEAF_PNG2PDF) $(OVERLEAF_PANDOC_TAG) $(OVERLEAF_GITBRIDGE_TAG)
 
 refresh-cache: refresh-cache-branch
 refresh-cache-branch:
@@ -61,17 +66,41 @@ build-community:
 	  $(MONOREPO_ROOT)
 
 build-png2pdf:
+# Self-contained image (from the public pandoc/core base; no repo content),
+# so the context is only needed so .dockerignore is resolved consistently.
+# Tag must match PANDOC_IMAGE in develop/dev.env (consumed by clsi).
+build-pandoc:
 	cp .dockerignore $(MONOREPO_ROOT)
 	docker build \
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
 	  --progress=plain \
 	  --build-arg OVERLEAF_BASE_TAG \
-	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION)" \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
 	  --cache-from $(OVERLEAF_PNG2PDF) \
 	  --file Dockerfile-png2pdf \
 	  --tag $(OVERLEAF_PNG2PDF) \
 	  $(MONOREPO_ROOT)
-
+	cp .dockerignore $(MONOREPO_ROOT)
+	docker build \
+	  --build-arg BUILDKIT_INLINE_CACHE=1 \
+	  --progress=plain \
+	  --pull \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
+	  --file Dockerfile-pandoc \
+	  --tag $(OVERLEAF_PANDOC_TAG) \
+	  $(MONOREPO_ROOT)
+# Builds the git-bridge jar inside the image (mvn stage), then the runtime.
+# Context is services/git-bridge (carries its own .dockerignore + pom.xml/src).
+# Tag matches the image consumed by develop/docker-compose.yml.
+build-git-bridge:
+	docker build \
+	  --build-arg BUILDKIT_INLINE_CACHE=1 \
+	  --progress=plain \
+	  --pull \
+	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION) \
+	  --file $(GITBRIDGE_DIR)/Dockerfile \
+	  --tag $(OVERLEAF_GITBRIDGE_TAG) \
+	  $(GITBRIDGE_DIR)
 push:
 	docker push $(OVERLEAF_BASE_TAG)
 	docker push $(OVERLEAF_BASE_BRANCH)
@@ -81,6 +110,8 @@ push:
 	docker push $(GRAMMAR_LLM_BRANCH)
 	docker push $(GRAMMAR_LLM_LATEST)
 	docker push $(OVERLEAF_PNG2PDF)
+	docker push $(OVERLEAF_PANDOC_TAG)
+	docker push $(OVERLEAF_GITBRIDGE_TAG)
 build-grammar-llm:
 	docker build \
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
@@ -90,7 +121,7 @@ build-grammar-llm:
 	  --cache-from $(GRAMMAR_LLM_LATEST) \
 	  --cache-from $(GRAMMAR_LLM_BRANCH) \
 	  --file $(MONOREPO_ROOT)tools/containers/grammar-llm/Dockerfile \
-	  --label "com.grammar-llm.revision=$(MONOREPO_REVISION)" \
+	  --label "com.grammar-llm.revision=$(MONOREPO_REVISION) \
 	  --tag $(GRAMMAR_LLM_TAG) \
 	  --tag $(GRAMMAR_LLM_BRANCH) \
 	  --tag $(GRAMMAR_LLM_LATEST) \
@@ -116,5 +147,5 @@ shellcheck_fix:
 	done
 
 .PHONY: all \
-	build-base build-community build-grammar-llm build-png2pdf \
+	build-base build-community build-grammar-llm build-png2pdf build-pandoc build-git-bridge \
 	shellcheck shellcheck_fix
