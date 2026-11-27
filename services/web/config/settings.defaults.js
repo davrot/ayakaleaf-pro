@@ -1066,9 +1066,15 @@ module.exports = {
         __dirname,
         '../modules/languagetool/frontend/js/languagetool-extension'
       ),
+      Path.resolve(__dirname, '../modules/autoformatter/frontend/js/extension'),
     ],
     sourceEditorVisualExtensions: [],
-    sourceEditorComponents: [],
+    sourceEditorComponents: [
+      Path.resolve(
+        __dirname,
+        '../modules/autoformatter/frontend/js/components/format-document-command'
+      ),
+    ],
     pdfLogEntryHeaderActionComponents: [
       Path.resolve(
         __dirname,
@@ -1099,7 +1105,12 @@ module.exports = {
     sourceEditorToolbarStartButtons: [],
     sourceEditorToolbarButtonGroups: [],
     sourceEditorToolbarComponents: [],
-    sourceEditorToolbarEndButtons: [],
+    sourceEditorToolbarEndButtons: [
+      Path.resolve(
+        __dirname,
+        '../modules/autoformatter/frontend/js/components/format-document-button'
+      ),
+    ],
     rootContextProviders: [
       Path.resolve(
         __dirname,
@@ -1246,6 +1257,10 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/python-runner/frontend/js/components/editor/python/python-output-toasts'
+      ),
+      Path.resolve(
+        __dirname,
+        '../modules/autoformatter/frontend/js/components/format-error-toast'
       ),
     ],
     editorSidebarComponents: [
