@@ -34,9 +34,17 @@ export function AccountMenuItems({
       <NavDropdownLinkItem href="/user/settings">
         {t('account_settings')}
       </NavDropdownLinkItem>
+<<<<<<< HEAD
       <NavDropdownLinkItem href="/user/highlight">
         {t('highlight')}
       </NavDropdownLinkItem>
+=======
+      {getMeta('ol-ExposedSettings')?.llmAllowUserSettings ? (
+        <NavDropdownLinkItem href="/user/llm-settings">
+          {t('ai_settings', 'AI Settings')}
+        </NavDropdownLinkItem>
+      ) : null}
+>>>>>>> llmbyo/llm-byo
       {showSubscriptionLink ? (
         <NavDropdownLinkItem href="/user/subscription">
           {t('subscription')}
