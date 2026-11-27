@@ -110,6 +110,7 @@ async function buildUserSettings(_req, _res, user) {
     darkModePdf: user.ace.darkModePdf ?? false,
     floatingMenu: user.ace.floatingMenu ?? true,
     highlight: buildHighlightTags(user.ace.highlight),
+    customKeybindings: user.ace.customKeybindings || {},
     zotero: buildRefProviderSettings(user.ace.zotero),
     mendeley: buildRefProviderSettings(user.ace.mendeley),
     papers: buildRefProviderSettings(user.ace.papers),

@@ -124,6 +124,10 @@ export const UserSchema = new Schema(
         ],
         default: [],
       },
+      // Custom key bindings: a map of rebindable-action id → CodeMirror key
+      // string (e.g. "Mod-Shift-K"). A null/empty value clears the binding
+      // back to the stock default.
+      customKeybindings: { type: Object, default: undefined },
       zotero: refProviderSettingsSchema,
       mendeley: refProviderSettingsSchema,
       papers: refProviderSettingsSchema,

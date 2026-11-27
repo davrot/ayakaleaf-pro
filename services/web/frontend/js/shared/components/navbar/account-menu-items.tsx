@@ -44,6 +44,8 @@ export function AccountMenuItems({
       ) : null}
       <NavDropdownLinkItem href="/user/symbol-palette">
         {t('symbol_palette')}
+      <NavDropdownLinkItem href="/user/keybind">
+        {t('keybindings')}
       </NavDropdownLinkItem>
       {showSubscriptionLink ? (
         <NavDropdownLinkItem href="/user/subscription">
