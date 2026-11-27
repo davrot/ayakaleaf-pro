@@ -51,6 +51,8 @@ export default function AdminMenu({
               Manage LLM
             </NavDropdownLinkItem>
           ) : null}
+          <NavDropdownLinkItem href="/admin/messages">
+            System Messages
         </>
       ) : null}
       {canDisplayProjectUrlLookup ? (
