@@ -1124,11 +1124,20 @@ module.exports = {
     ],
     sourceEditorToolbarStartButtons: [],
     sourceEditorToolbarButtonGroups: [],
-    sourceEditorToolbarComponents: [],
+    sourceEditorToolbarComponents: [
+      Path.resolve(
+        __dirname,
+        '../modules/latex-editor/frontend/js/components/latex-editor-controller'
+      ),
+    ],
     sourceEditorToolbarEndButtons: [
       Path.resolve(
         __dirname,
         '../modules/autoformatter/frontend/js/components/format-document-button'
+      ),
+      Path.resolve(
+        __dirname,
+        '../modules/latex-editor/frontend/js/components/latex-editor-toolbar-button'
       ),
     ],
     rootContextProviders: [
@@ -1406,6 +1415,7 @@ module.exports = {
     'open-in-overleaf',
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
+    'latex-editor',
   ],
   viewIncludes: {},
 
