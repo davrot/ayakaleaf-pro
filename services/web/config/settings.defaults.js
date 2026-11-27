@@ -1132,6 +1132,7 @@ module.exports = {
     pdfPreviewPromotions: [],
     diagnosticActions: [],
     sourceEditorCompletionSources: [],
+<<<<<<< HEAD
     sourceEditorSymbolPalette: [
       Path.resolve(
         __dirname,
@@ -1144,6 +1145,9 @@ module.exports = {
         '../modules/llm/frontend/js/extensions/llm-editor-toolbar-ask-ai'
       ),
     ],
+=======
+    sourceEditorToolbarStartButtons: [],
+>>>>>>> symrail/symbol-palette-railbar
     sourceEditorToolbarButtonGroups: [],
     sourceEditorToolbarComponents: [
       Path.resolve(
@@ -1306,7 +1310,6 @@ module.exports = {
     usGovBanner: [],
     rollingBuildsUpdatedAlert: [],
     offlineModeToolbarButtons: [],
-    settingsEntries: [],
     autoCompleteExtensions: [
       Path.resolve(
         __dirname,
@@ -1421,10 +1424,14 @@ module.exports = {
       Path.resolve(
         __dirname,
 <<<<<<< HEAD
+<<<<<<< HEAD
         '../modules/llm/frontend/js/components/llm-rail-pane'
 =======
         '../modules/project-inspection/frontend/js/project-inspection-rail-entry.tsx'
 >>>>>>> projinspect/project_inspection
+=======
+        '../modules/symbol-palette/frontend/js/components/symbol-palette-rail-entry'
+>>>>>>> symrail/symbol-palette-railbar
       ),
     ],
     railPopovers: [],

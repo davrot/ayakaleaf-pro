@@ -35,6 +35,7 @@ export function AccountMenuItems({
         {t('account_settings')}
       </NavDropdownLinkItem>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <NavDropdownLinkItem href="/user/highlight">
         {t('highlight')}
       </NavDropdownLinkItem>
@@ -45,6 +46,11 @@ export function AccountMenuItems({
         </NavDropdownLinkItem>
       ) : null}
 >>>>>>> llmbyo/llm-byo
+=======
+      <NavDropdownLinkItem href="/user/symbol-palette">
+        {t('symbol_palette')}
+      </NavDropdownLinkItem>
+>>>>>>> symrail/symbol-palette-railbar
       {showSubscriptionLink ? (
         <NavDropdownLinkItem href="/user/subscription">
           {t('subscription')}

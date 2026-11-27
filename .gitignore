@@ -12,6 +12,7 @@
 .env
 docker-compose.override.yml
 
+<<<<<<< HEAD
 # overleaf-lab (2026-11): build & session artifacts — never commit
 # (a git add -A once swept ~16k of these into a commit; this prevents it)
 .pnp.cjs
@@ -25,3 +26,23 @@ services/web/node_modules/
 services/web/public/*.mjs
 services/web/public/*.mjs.LICENSE.txt
 >>>>>>> llmbyo/llm-byo
+=======
+# yarn PnP local state (never commit; .yarn/patches stays tracked)
+.yarn/cache/
+.yarn/install-state.gz
+.yarn/unplugged/
+.pnp.cjs
+.pnp.loader.mjs
+.pnp.data.mjs
+node_modules/
+
+# local agent tooling state
+.pi/
+
+# webpack/babel local build cache
+services/web/.cache/
+
+# hashed webpack build artifacts (generated in the Docker image, not source)
+services/web/public/*.[0-9a-f]*.mjs
+services/web/public/*.[0-9a-f]*.mjs.LICENSE.txt
+>>>>>>> symrail/symbol-palette-railbar

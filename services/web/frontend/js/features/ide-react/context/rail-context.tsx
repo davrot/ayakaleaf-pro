@@ -25,7 +25,11 @@ export type RailTabKey =
   | 'full-project-search'
   | 'dimensions'
   | 'workbench'
+<<<<<<< HEAD
   | 'llm-chat'
+=======
+  | 'symbol-palette'
+>>>>>>> symrail/symbol-palette-railbar
 
 export type RailModalKey =
   | 'keyboard-shortcuts'
