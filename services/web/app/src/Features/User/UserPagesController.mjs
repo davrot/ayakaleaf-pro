@@ -295,6 +295,8 @@ const loginPageSchema = z.object({
 
 async function symbolPalettePage(req, res) {
   res.render('user/symbol-palette', { title: 'symbol_palette' })
+}
+
 async function registerPage(req, res) {
   const sharedProjectData = req.session.sharedProjectData || {}
 
