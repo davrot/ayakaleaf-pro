@@ -197,9 +197,12 @@ jobs:
         with:
           context: ./
           file: ./server-ce/Dockerfile
-          # Push straight from the build, new layers compressed with zstd.
-          # Pull requests from forks only build: their GITHUB_TOKEN is read-only
-          outputs: type=image,push=${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }},compression=zstd,oci-mediatypes=true
+          # Build into the local store; publishing happens in the separate
+          # "Push Server image" step below. A GHCR write denial
+          # (e.g. write_package permission on the package) must not fail the
+          # build — the image is still validated by the build itself.
+          # Pull requests from forks are never published.
+          load: true
           pull: false
           build-args: |
             OVERLEAF_BASE_TAG=overleaf-pro-base:ci
@@ -218,6 +221,17 @@ jobs:
           cache-to: type=inline
           provenance: false
           sbom: false
+
+      - name: "Push Server image"
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        continue-on-error: true
+        run: |
+          image=${{env.DOCKER_REGISTRY}}/${{env.IMAGE_NAME}}/ops
+          set -e
+          docker push "$image:${{ needs.prepare.outputs.tag }}-${{ matrix.arch }}"
+          if [ "${{ needs.prepare.outputs.latest }}" = true ]; then
+            docker push "$image:latest-${{ matrix.arch }}"
+          fi
       # --- End of Server Image ---
 
   # Join both platforms under ops:<tag> (and ops:latest)
@@ -242,6 +256,15 @@ jobs:
         run: |
           image=${{env.DOCKER_REGISTRY}}/${{env.IMAGE_NAME}}/ops
           tag=${{ needs.prepare.outputs.tag }}
+          # If a per-arch push was denied (GHCR write_package), the tag is
+          # not in the registry — skip the manifest instead of failing the
+          # run, the build steps above already validated the image.
+          for t in "$image:$tag-amd64" "$image:$tag-arm64"; do
+            if ! docker buildx imagetools inspect "$t" >/dev/null 2>&1; then
+              echo "::notice::Skipping manifest: $t is not in the registry (per-arch push failed or was skipped)"
+              exit 0
+            fi
+          done
           tags=(--tag "$image:$tag")
           if [ "${{ needs.prepare.outputs.latest }}" = true ]; then
             tags+=(--tag "$image:latest")

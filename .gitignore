@@ -25,3 +25,6 @@ services/web/public/*.mjs
 services/web/public/*.mjs.LICENSE.txt
 services/web/public/*.[0-9a-f]*.mjs
 services/web/public/*.[0-9a-f]*.mjs.LICENSE.txt
+
+# SAML dev IdP private key — never commit (rotated 2026-11-26, was exposed in git)
+develop/authentication/saml/idp.key
