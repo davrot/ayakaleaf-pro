@@ -763,7 +763,6 @@
   "dropbox_unlinked_premium_feature": "<0>Your Dropbox account has been unlinked</0> because Dropbox Sync is a premium feature that you had through an institutional license.",
   "due_date": "Due __date__",
   "due_today": "Due today",
-  "duplicate": "Duplicate",
   "duplicate_file": "Duplicate File",
   "duplicate_projects": "This user has projects with duplicate names",
   "e_g_example_com": "e.g. example.com",
@@ -3544,7 +3543,6 @@
   "zotero_sync_up_to_date": "Your Zotero references are already up to date.",
   "zotero_upgrade_prompt_content": "Link your Zotero account to search and add your references from Zotero directly in your project—they’ll automatically be added to your .bib file. Or import them as a file into your __appName__ projects.",
   "zotero_upgrade_prompt_title": "Cite from Zotero",
-<<<<<<< HEAD
   "Could not save: the file changed or is no longer a bibliography.": "Could not save: the file changed or is no longer a bibliography.",
   "Dismiss": "Dismiss",
   "BibTeX editor toolbar": "BibTeX editor toolbar",
@@ -3735,8 +3733,7 @@
   "my_publications": "My Publications",
   "problem_checking_connection_with_provider": "Sorry, there was a problem checking the connection with __provider__ service. Please try again in a few moments.",
   "zotero_could_not_load_collections": "Could not load Zotero collections",
-  "zotero_reference_loading_error_not_linked": "Refresh failed: the account used to import the file is no longer linked to Zotero or has been removed."
-=======
+  "zotero_reference_loading_error_not_linked": "Refresh failed: the account used to import the file is no longer linked to Zotero or has been removed.",
   "add_rubric": "Add rubric",
   "ai_assistant_description": "Get help with LaTeX syntax, formatting, and troubleshooting",
   "ai_assistant_input": "AI assistant input",
@@ -3912,5 +3909,4 @@
   "tokens": "tokens",
   "try_asking": "Try asking",
   "unselect_all": "Unselect all"
->>>>>>> llmbyo/llm-byo
 }

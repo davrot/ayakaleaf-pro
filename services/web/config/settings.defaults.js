@@ -1096,11 +1096,11 @@ module.exports = {
     sourceEditorComponents: [
       Path.resolve(
         __dirname,
-<<<<<<< HEAD
         '../modules/autoformatter/frontend/js/components/format-document-command'
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/llm/frontend/js/components/llm-source-editor-component'
->>>>>>> llmbyo/llm-byo
       ),
     ],
     pdfLogEntryHeaderActionComponents: [
@@ -1132,7 +1132,6 @@ module.exports = {
     pdfPreviewPromotions: [],
     diagnosticActions: [],
     sourceEditorCompletionSources: [],
-<<<<<<< HEAD
     sourceEditorSymbolPalette: [
       Path.resolve(
         __dirname,
@@ -1145,9 +1144,6 @@ module.exports = {
         '../modules/llm/frontend/js/extensions/llm-editor-toolbar-ask-ai'
       ),
     ],
-=======
-    sourceEditorToolbarStartButtons: [],
->>>>>>> symrail/symbol-palette-railbar
     sourceEditorToolbarButtonGroups: [],
     sourceEditorToolbarComponents: [
       Path.resolve(
@@ -1389,7 +1385,6 @@ module.exports = {
     ],
     referenceSearchSetting: [],
     settingsModalEditorTabSections: [],
-<<<<<<< HEAD
     settingsModalSpellcheckSections: [
       // LanguageTool settings section. Unconditional bundle registration
       // (build-time macro — see sourceEditorExtensions above); the section
@@ -1400,16 +1395,12 @@ module.exports = {
         '../modules/languagetool/frontend/js/languagetool-section'
       ),
     ],
-    editorFloatingMenuActions: [],
-=======
-    settingsModalSpellcheckSections: [],
     editorFloatingMenuActions: [
       Path.resolve(
         __dirname,
         '../modules/llm/frontend/js/extensions/llm-fm-ask-ai.tsx'
       ),
     ],
->>>>>>> llmbyo/llm-byo
     referenceIndices: [
       Path.resolve(
         __dirname,
@@ -1423,15 +1414,15 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
-<<<<<<< HEAD
-<<<<<<< HEAD
         '../modules/llm/frontend/js/components/llm-rail-pane'
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/project-inspection/frontend/js/project-inspection-rail-entry.tsx'
->>>>>>> projinspect/project_inspection
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/symbol-palette/frontend/js/components/symbol-palette-rail-entry'
->>>>>>> symrail/symbol-palette-railbar
       ),
     ],
     railPopovers: [],

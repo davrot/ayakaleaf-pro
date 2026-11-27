@@ -43,17 +43,14 @@ export default function AdminMenu({
           <NavDropdownLinkItem href="/admin/user">
             Manage Users
           </NavDropdownLinkItem>
-<<<<<<< HEAD
           <NavDropdownLinkItem href="/admin/active-projects">
             Active Projects
           </NavDropdownLinkItem>
-=======
           {canDisplayLlmAdminMenu ? (
             <NavDropdownLinkItem href="/admin/llm/settings">
               Manage LLM
             </NavDropdownLinkItem>
           ) : null}
->>>>>>> llmbyo/llm-byo
         </>
       ) : null}
       {canDisplayProjectUrlLookup ? (

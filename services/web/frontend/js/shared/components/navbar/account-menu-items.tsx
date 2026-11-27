@@ -34,23 +34,17 @@ export function AccountMenuItems({
       <NavDropdownLinkItem href="/user/settings">
         {t('account_settings')}
       </NavDropdownLinkItem>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <NavDropdownLinkItem href="/user/highlight">
         {t('highlight')}
       </NavDropdownLinkItem>
-=======
       {getMeta('ol-ExposedSettings')?.llmAllowUserSettings ? (
         <NavDropdownLinkItem href="/user/llm-settings">
           {t('ai_settings', 'AI Settings')}
         </NavDropdownLinkItem>
       ) : null}
->>>>>>> llmbyo/llm-byo
-=======
       <NavDropdownLinkItem href="/user/symbol-palette">
         {t('symbol_palette')}
       </NavDropdownLinkItem>
->>>>>>> symrail/symbol-palette-railbar
       {showSubscriptionLink ? (
         <NavDropdownLinkItem href="/user/subscription">
           {t('subscription')}
