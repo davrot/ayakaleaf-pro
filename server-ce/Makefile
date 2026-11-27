@@ -18,7 +18,7 @@ export GRAMMAR_LLM_LATEST ?= grammar-llm
 export GRAMMAR_LLM_BRANCH ?= grammar-llm:$(BRANCH_NAME_TAG_SAFE)
 export GRAMMAR_LLM_TAG ?= grammar-llm:$(BRANCH_NAME_TAG_SAFE)-$(MONOREPO_REVISION)
 export OVERLEAF_PNG2PDF ?= sharelatex/png2pdf:2026-06-24
-export OVERLEAF_PANDOC_TAG ?= sharelatex/sharelatex-pandoc:local
+export OVERLEAF_PANDOC_TAG ?= overleaf-pandoc:local
 export OVERLEAF_GITBRIDGE_TAG ?= sharelatex/git-bridge:latest
 all: build-base build-community build-grammar-llm build-png2pdf build-pandoc build-git-bridge
 clean:
