@@ -1208,6 +1208,10 @@ module.exports = {
         __dirname,
         '../modules/dropbox/frontend/js/components/dropbox-sync-widget.tsx'
       ),
+      Path.resolve(
+        __dirname,
+        '../modules/webdav/frontend/js/components/webdav-widget.tsx'
+      ),
     ],
     referenceLinkingWidgets: [
       Path.resolve(
@@ -1253,6 +1257,18 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/gitea-sync/frontend/js/components/import-from-gitea-menu.tsx'
+      ),
+    ],
+    importProjectFromWebdavModalWrapper: [
+      Path.resolve(
+        __dirname,
+        '../modules/webdav/frontend/js/components/import-from-webdav-modal-wrapper.tsx'
+      ),
+    ],
+    importProjectFromWebdavMenu: [
+      Path.resolve(
+        __dirname,
+        '../modules/webdav/frontend/js/components/import-from-webdav-menu.tsx'
       ),
     ],
     editorLeftMenuSync: [
@@ -1376,6 +1392,10 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
+        '../modules/webdav/frontend/js/components/webdav-integration-card.tsx'
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/zotero/frontend/js/components/zotero-integration-card.tsx'
       ),
       Path.resolve(
@@ -1453,6 +1473,7 @@ module.exports = {
     'github-sync',
     'gitlab-sync',
     'gitea-sync',
+    'webdav',
     'dropbox',
     'zotero',
     'mendeley',
