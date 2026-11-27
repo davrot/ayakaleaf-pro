@@ -5,7 +5,7 @@ ARG SIMPLESAMLPHP_SHA256=b199ebcba6e30220e7b5df2783ca42f8947dd9bdf046e9e6302fef3
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    php-cli php-xml php-mbstring php-curl php-intl ca-certificates curl \
+    php-cli php-xml php-mbstring php-curl php-intl ca-certificates curl openssl \
   && rm -rf /var/lib/apt/lists/* \
   && curl -fsSL -o /tmp/simplesamlphp.tar.gz \
     https://github.com/simplesamlphp/simplesamlphp/releases/download/v${SIMPLESAMLPHP_VERSION}/simplesamlphp-${SIMPLESAMLPHP_VERSION}-full.tar.gz \
@@ -24,7 +24,17 @@ RUN apt-get update \
 
 COPY config.php authsources.php /var/simplesamlphp/config/
 COPY saml20-idp-hosted.php saml20-sp-remote.php /var/simplesamlphp/metadata/
-COPY idp.crt idp.key /var/simplesamlphp/cert/
+# The IdP signing key pair is generated at image build time — private key
+# material never lives in the repository (the committed pair was exposed in
+# git history and rotated on 2026-11-26; see 829f649f16).
+RUN mkdir -p /var/simplesamlphp/cert \
+  && openssl genrsa -out /var/simplesamlphp/cert/idp.key 2048 2>/dev/null \
+  && openssl req -new -x509 \
+       -key /var/simplesamlphp/cert/idp.key \
+       -out /var/simplesamlphp/cert/idp.crt \
+       -days 3650 \
+       -subj "/CN=mock-saml dev IdP" \
+  && chmod 644 /var/simplesamlphp/cert/idp.key /var/simplesamlphp/cert/idp.crt
 
 USER www-data
 EXPOSE 4000

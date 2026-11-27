@@ -7,4 +7,7 @@ services:
 
   web:
     volumes:
-      - ./authentication/saml/idp.crt:/etc/saml/idp.crt:ro
+      # The IdP key pair is generated when the saml image is built (private
+      # key material must not live in the repository); mount the matching
+      # certificate from the container so the SP always verifies against it.
+      - saml:/var/simplesamlphp/cert/idp.crt:/etc/saml/idp.crt:ro

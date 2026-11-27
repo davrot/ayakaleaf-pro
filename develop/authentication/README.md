@@ -23,7 +23,7 @@ Every user has its own email, so each one creates its own account.
 
 ## SAML
 
-`saml/` builds [SimpleSAMLphp](https://github.com/simplesamlphp/simplesamlphp) (the release tarball, checked by SHA-256) on `debian:trixie-slim`. The users are in `saml/authsources.php`. `saml/idp.key` signs the responses and Overleaf checks them with `saml/idp.crt`; the pair is for local development only.
+`saml/` builds [SimpleSAMLphp](https://github.com/simplesamlphp/simplesamlphp) (the release tarball, checked by SHA-256) on `debian:trixie-slim`. The users are in `saml/authsources.php`. The IdP signing key pair is **generated at image build time** (private key material never lives in the repository — the pair that used to be committed was exposed in git history and rotated on 2026-11-26); the web service mounts the matching certificate from the saml container for SP-side signature checks.
 
 The IdP is served under the dev site: webpack forwards `/simplesaml` to the `saml` service, like `/git` to git-bridge. It reads `PUBLIC_URL` from `dev.env` for its own URL and for Overleaf's callback. Set the same address in `dev.env`:
 
