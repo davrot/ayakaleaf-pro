@@ -1420,7 +1420,11 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
+<<<<<<< HEAD
         '../modules/llm/frontend/js/components/llm-rail-pane'
+=======
+        '../modules/project-inspection/frontend/js/project-inspection-rail-entry.tsx'
+>>>>>>> projinspect/project_inspection
       ),
     ],
     railPopovers: [],
@@ -1457,6 +1461,7 @@ module.exports = {
     'workbench',
     'llm',
     'error-assistant',
+    'project-inspection',
     'instance-features',
     'open-in-overleaf',
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
