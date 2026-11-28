@@ -13,6 +13,12 @@ public/images
 public/*.mjs
 public/*.mjs.LICENSE.txt
 
+# Loose webpack build artifacts at the public root (e.g. onnxruntime-web
+# chunks from the symbol-palette recognition worker) — build output,
+# not source.
+public/*.mjs
+public/*.mjs.LICENSE.txt
+
 modules/**/Makefile
 
 # Precompiled pug files

@@ -1343,7 +1343,11 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
+<<<<<<< HEAD
         '../modules/autoformatter/frontend/js/components/format-error-toast'
+=======
+        '../modules/svgeditor/frontend/js/components/svg-convert-toasts'
+>>>>>>> imgb/image-plugin-b
       ),
     ],
     editorSidebarComponents: [
@@ -1452,11 +1456,27 @@ module.exports = {
     railActions: [],
     railModals: [],
     // Buttons rendered next to the download button in the file view header
+<<<<<<< HEAD
     // (e.g. the "Edit Image" action from the toast-image module).
     fileViewButtons: [
       Path.resolve(
         __dirname,
         '../modules/toast-image/frontend/js/components/toast-image-editor'
+=======
+    // (e.g. the "Edit SVG" action from the svgeditor module).
+    fileViewButtons: [
+      Path.resolve(
+        __dirname,
+        '../modules/svgeditor/frontend/js/components/svg-editor-button'
+      ),
+    ],
+    // Items appended to the file tree right-click (context) menu
+    // (e.g. SVG -> PDF/PNG conversion from the svgeditor module).
+    fileTreeContextMenuItems: [
+      Path.resolve(
+        __dirname,
+        '../modules/svgeditor/frontend/js/components/svg-convert-menu-item'
+>>>>>>> imgb/image-plugin-b
       ),
     ],
   },
@@ -1496,6 +1516,7 @@ module.exports = {
     'instance-features',
     'open-in-overleaf',
 <<<<<<< HEAD
+<<<<<<< HEAD
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
     'latex-editor',
@@ -1504,6 +1525,9 @@ module.exports = {
     'instance-stats',
 =======
     'toast-image',
+=======
+    'svgeditor',
+>>>>>>> imgb/image-plugin-b
     'user-emails'
 >>>>>>> imga/image-plugin-a
   ],
