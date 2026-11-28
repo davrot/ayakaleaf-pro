@@ -9,6 +9,7 @@
 # user defined files
 .env
 docker-compose.override.yml
+<<<<<<< HEAD
 # overleaf-lab (2026-11): build & session artifacts — never commit
 # (a git add -A once swept ~16k of these into a commit; this prevents it)
 .pnp.cjs
@@ -32,3 +33,18 @@ develop/authentication/saml/idp.key
 # test runner caches
 .vite/
 **/node_modules/.vite/
+=======
+
+# build artifacts (PnP, caches, local webpack output) — never commit
+.pnp.cjs
+.pnp.loader.mjs
+.pnp.data.mjs
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+node_modules/
+.pi/
+services/web/.cache/
+services/web/public/*.mjs
+services/web/public/*.mjs.LICENSE.txt
+>>>>>>> drawtikz/drawio-tikz-editor
