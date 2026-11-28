@@ -28,3 +28,7 @@ services/web/public/*.[0-9a-f]*.mjs.LICENSE.txt
 
 # SAML dev IdP private key — never commit (rotated 2026-11-26, was exposed in git)
 develop/authentication/saml/idp.key
+
+# test runner caches
+.vite/
+**/node_modules/.vite/

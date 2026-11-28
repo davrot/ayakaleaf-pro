@@ -1546,8 +1546,7 @@ __metadata:
 "@babel/helper-string-parser@npm:^7.29.15":
   version: 7.29.15
   resolution: "@babel/helper-string-parser@npm:7.29.15"
-  checksum: 10c0/8d130fb596ef470c646f2f98fb50ada5a653ea9fd583dba0884f15327b8022c749e839e0c4e4ee9c670d258e10b997e23b7224ca57cc08dca5e808d4fe5d7048
-  languageName: node
+  checksum: 10c0/8d130fb596ef470c646f2f98fb50ada5a653ea9fd583dba0884f15327b8022c749e839e0c4e4ee9c670d258e10b997e23b7224ca57cc08dca5e808d4fe5d7048  languageName: node
   linkType: hard
 
 "@babel/helper-string-parser@npm:^7.29.7":
@@ -1617,8 +1616,7 @@ __metadata:
     "@babel/types": "npm:^7.29.15"
   bin:
     parser: ./bin/babel-parser.js
-  checksum: 10c0/5fca335e83d30af8e2dd632c3630526cf410ea6b6567c2f7a5e44e13deba39caf7146ba35f9d6abea34d6d4e869eb32e00dc37fa5213d288ff987cff360db6a6
-  languageName: node
+  checksum: 10c0/5fca335e83d30af8e2dd632c3630526cf410ea6b6567c2f7a5e44e13deba39caf7146ba35f9d6abea34d6d4e869eb32e00dc37fa5213d288ff987cff360db6a6  languageName: node
   linkType: hard
 
 "@babel/parser@npm:^7.29.3":
@@ -2741,8 +2739,7 @@ __metadata:
   dependencies:
     "@babel/helper-string-parser": "npm:^7.29.15"
     "@babel/helper-validator-identifier": "npm:^7.29.7"
-  checksum: 10c0/2a153a44daccd3f93f33b64f57f9614a160ba1e53ef3c35c305ad687678a537e59b17f0a501901df8618304b905f3268ba39d96ffb78b0b5790e96dc2a9b5833
-  languageName: node
+  checksum: 10c0/2a153a44daccd3f93f33b64f57f9614a160ba1e53ef3c35c305ad687678a537e59b17f0a501901df8618304b905f3268ba39d96ffb78b0b5790e96dc2a9b5833  languageName: node
   linkType: hard
 
 "@babel/types@npm:^7.29.7":
@@ -3987,8 +3984,7 @@ __metadata:
   resolution: "@hono/node-server@npm:2.1.11"
   peerDependencies:
     hono: ^4 || ^5.0.0-0
-  checksum: 10c0/a9c1f543eb2fefe071192114f1c5ba7deb40235a80524b4c4622c00cb862eefc3453af8e6609bdd18fd715ba594b2afb21b4c357edf238db014298b89922baf1
-  languageName: node
+  checksum: 10c0/a9c1f543eb2fefe071192114f1c5ba7deb40235a80524b4c4622c00cb862eefc3453af8e6609bdd18fd715ba594b2afb21b4c357edf238db014298b89922baf1  languageName: node
   linkType: hard
 
 "@humanfs/core@npm:^0.19.2":
@@ -17027,14 +17023,12 @@ __metadata:
 
 "express-rate-limit@npm:^8.2.1":
   version: 8.7.5
-  resolution: "express-rate-limit@npm:8.7.5"
-  dependencies:
+  resolution: "express-rate-limit@npm:8.7.5"  dependencies:
     debug: "npm:^4.4.3"
     ip-address: "npm:^10.2.0"
   peerDependencies:
     express: ">= 4.11"
-  checksum: 10c0/a050b858e2ff9dbc24b01e8dfe6a9ca243016454d1a7dfdca793038f89dd87fda2856be67c05e0fb0881a41ec8ee4fee1a7d4e678aee6b74a20fa4226a1d8217
-  languageName: node
+  checksum: 10c0/a050b858e2ff9dbc24b01e8dfe6a9ca243016454d1a7dfdca793038f89dd87fda2856be67c05e0fb0881a41ec8ee4fee1a7d4e678aee6b74a20fa4226a1d8217  languageName: node
   linkType: hard
 
 "express-session@npm:1.17.2":
@@ -18938,8 +18932,7 @@ __metadata:
 "hono@npm:^4.11.4":
   version: 4.13.21
   resolution: "hono@npm:4.13.21"
-  checksum: 10c0/e8c2fb50d3e173f6f1bcc5cc6499967350cd3ec4f616598c2a2c6ab3bb9747605cda06bb393f661544258c16766d08c986856873f0faa7b6aa8cbf9a1071fb38
-  languageName: node
+  checksum: 10c0/e8c2fb50d3e173f6f1bcc5cc6499967350cd3ec4f616598c2a2c6ab3bb9747605cda06bb393f661544258c16766d08c986856873f0faa7b6aa8cbf9a1071fb38  languageName: node
   linkType: hard
 
 "hookified@npm:^1.15.0, hookified@npm:^1.15.1":
