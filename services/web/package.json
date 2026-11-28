@@ -170,6 +170,7 @@
     "nodemailer": "^8.0.5",
     "oauth-1.0a": "^2.2.6",
     "on-headers": "^1.0.2",
+    "onnxruntime-web": "1.26.0",
     "otplib": "^12.0.1",
     "overleaf-editor-core": "workspace:*",
     "p-limit": "^2.3.0",

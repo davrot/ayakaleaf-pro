@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { matchSorter } from 'match-sorter'
 import { useSymbolPaletteConfig } from '../context/symbol-palette-context'
@@ -6,9 +7,20 @@ import { getSymbolCharacter } from '../utils/symbol-character'
 import SymbolPaletteSearch from './symbol-palette-search'
 import SymbolPaletteBody from './symbol-palette-body'
 import SymbolPaletteTabs from './symbol-palette-tabs'
+import SymbolPaletteDrawToggle from './symbol-palette-draw-toggle'
+
+const SymbolPaletteDraw = lazy(() => import('./symbol-palette-draw'))
+
+// Recognition rasterises strokes on an OffscreenCanvas in a worker, which
+// Safari 15 (still a supported browser) lacks.
+const drawingSupported =
+  typeof OffscreenCanvas !== 'undefined' &&
+  new OffscreenCanvas(1, 1).getContext('2d') !== null
 
 export default function SymbolPaletteContent({ handleSelect }) {
+  const { t } = useTranslation()
   const [input, setInput] = useState('')
+  const [drawing, setDrawing] = useState(false)
 
   const { categories, symbols } = useSymbolPaletteConfig()
 
@@ -92,11 +104,32 @@ export default function SymbolPaletteContent({ handleSelect }) {
               setActiveCategoryId={setActiveCategoryId}
             />
             <div className="symbol-palette-header-group">
-              <SymbolPaletteSearch setInput={setInput} inputRef={inputRef} />
+              <SymbolPaletteSearch
+                setInput={setInput}
+                inputRef={inputRef}
+                onFocus={() => setDrawing(false)}
+              />
+              {drawingSupported && (
+                <SymbolPaletteDrawToggle
+                  active={drawing}
+                  setActive={setDrawing}
+                />
+              )}
             </div>
           </div>
         </div>
         <div className="symbol-palette-body">
+          {drawing && drawingSupported ? (
+            <Suspense
+              fallback={
+                <div className="symbol-palette-draw-instructions">
+                  {t('symbol_palette_loading_model')}
+                </div>
+              }
+            >
+              <SymbolPaletteDraw handleSelect={handleSelect} />
+            </Suspense>
+          ) : (
           <SymbolPaletteBody
             categories={categories}
             categorisedSymbols={categorisedSymbols}
@@ -105,6 +138,7 @@ export default function SymbolPaletteContent({ handleSelect }) {
             focusInput={focusInput}
             activeCategoryId={activeCategoryId}
           />
+          )}
         </div>
       </div>
     </div>
