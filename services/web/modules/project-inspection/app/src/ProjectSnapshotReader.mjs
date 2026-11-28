@@ -9,25 +9,9 @@ import {
   ProjectTooLargeError,
 } from './ProjectInspectionErrors.mjs'
 
-const MAX_SOURCE_BYTES = parsePositiveInteger(
-  process.env.PROJECT_INSPECTION_MAX_SOURCE_BYTES,
-  25 * 1024 * 1024
-)
-const MAX_BIB_BYTES = parsePositiveInteger(
-  process.env.PROJECT_INSPECTION_MAX_BIB_BYTES,
-  Math.min(6 * 1024 * 1024, 3 * Settings.max_doc_length)
-)
-const MAX_TOTAL_BIB_BYTES = parsePositiveInteger(
-  process.env.PROJECT_INSPECTION_MAX_TOTAL_BIB_BYTES,
-  25 * 1024 * 1024
-)
-
 const BIB_EXTENSION = /\.bib(?:tex)?$/i
 
-function parsePositiveInteger(value, fallback) {
-  const parsed = Number.parseInt(value ?? '', 10)
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback
-}
+const { maxSourceBytes, maxBibBytes, maxTotalBibBytes } = Settings.projectInspection
 
 function normalizeProjectPath(projectPath) {
   return path.posix.normalize(projectPath.replace(/^\/+/, ''))
@@ -65,21 +49,21 @@ async function loadBinaryBibliography(projectId, file, signal) {
       projectId,
       file.hash,
       'GET',
-      `bytes=0-${MAX_BIB_BYTES - 1}`
+      `bytes=0-${maxBibBytes - 1}`
     )
 
   const totalFromRange = Number.parseInt(contentRange?.split('/')?.[1] ?? '', 10)
   const knownSize = Number.isFinite(totalFromRange)
     ? totalFromRange
     : contentLength
-  if (Number.isFinite(knownSize) && knownSize > MAX_BIB_BYTES) {
+  if (Number.isFinite(knownSize) && knownSize > maxBibBytes) {
     stream.destroy()
     return { content: null, skippedReason: 'file-too-large' }
   }
 
   const { content, truncated } = await streamToString(
     stream,
-    MAX_BIB_BYTES,
+    maxBibBytes,
     signal
   )
   return {
@@ -106,9 +90,9 @@ async function loadBibliographies(projectId, files, { signal } = {}) {
       bibliography.content ?? '',
       'utf8'
     )
-    if (totalBinaryBibliographyBytes > MAX_TOTAL_BIB_BYTES) {
+    if (totalBinaryBibliographyBytes > maxTotalBibBytes) {
       throw new ProjectTooLargeError(
-        `Bibliography content exceeds the ${MAX_TOTAL_BIB_BYTES} byte analysis limit`
+        `Bibliography content exceeds the ${Math.ceil(maxTotalBibBytes / (1024 * 1024))} MB analysis limit`
       )
     }
     binaryBibliographies.push({
@@ -169,9 +153,9 @@ async function read(projectId, entryPointIds, { signal } = {}) {
     (total, doc) => total + Buffer.byteLength(doc.content, 'utf8'),
     0
   )
-  if (totalSourceBytes > MAX_SOURCE_BYTES) {
+  if (totalSourceBytes > maxSourceBytes) {
     throw new ProjectTooLargeError(
-      `Project source exceeds the ${MAX_SOURCE_BYTES} byte analysis limit`
+      `Project source exceeds the ${Math.ceil(maxSourceBytes / (1024 * 1024))} MB analysis limit`
     )
   }
 

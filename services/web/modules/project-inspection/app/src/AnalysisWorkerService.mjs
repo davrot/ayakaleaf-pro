@@ -1,3 +1,4 @@
+import Settings from '@overleaf/settings'
 import { Worker } from 'node:worker_threads'
 import pLimit from 'p-limit'
 import {
@@ -6,20 +7,9 @@ import {
   ProjectInspectionError,
 } from './ProjectInspectionErrors.mjs'
 
-const MAX_CONCURRENCY = parsePositiveInteger(
-  process.env.PROJECT_INSPECTION_WORKER_CONCURRENCY,
-  2
-)
-const TIMEOUT_MS = parsePositiveInteger(
-  process.env.PROJECT_INSPECTION_TIMEOUT_MS,
-  30_000
-)
+const MAX_CONCURRENCY = Settings.projectInspection.maxConcurrency
+const TIMEOUT_MS = Settings.projectInspection.timeoutMS
 const limit = pLimit(MAX_CONCURRENCY)
-
-function parsePositiveInteger(value, fallback) {
-  const parsed = Number.parseInt(value ?? '', 10)
-  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback
-}
 
 async function run(snapshot, { signal } = {}) {
   if (signal?.aborted) throw new AnalysisCancelledError()
@@ -56,7 +46,8 @@ async function run(snapshot, { signal } = {}) {
         onAbort()
         return
       }
-      worker.once('message', message => {
+      worker.on('message', message => {
+        if (message?.['watch:require'] || message?.['watch:import']) return
         if (message?.ok) {
           finish(resolve, message.result)
         } else {

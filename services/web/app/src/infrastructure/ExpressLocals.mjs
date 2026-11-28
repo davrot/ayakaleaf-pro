@@ -425,6 +425,7 @@ export default async function (webRouter, privateApiRouter, publicApiRouter) {
       linkedInInsightsPartnerId: Settings.analytics?.linkedIn?.partnerId,
       languageToolAvailable: !!Settings.languageToolURL,
       enablePandocConversions: Settings.enablePandocConversions,
+      enableProjectInspection: !!Settings.projectInspection?.enable,
       mixpanelLabsToken:
         Settings.labs?.enable && Settings.analytics?.mixpanel?.labsToken,
 <<<<<<< HEAD
