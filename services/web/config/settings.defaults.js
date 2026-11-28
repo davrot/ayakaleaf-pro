@@ -1132,12 +1132,6 @@ module.exports = {
     pdfPreviewPromotions: [],
     diagnosticActions: [],
     sourceEditorCompletionSources: [],
-    sourceEditorSymbolPalette: [
-      Path.resolve(
-        __dirname,
-        '../modules/symbol-palette/frontend/js/components/symbol-palette'
-      ),
-    ],
     sourceEditorToolbarStartButtons: [
       Path.resolve(
         __dirname,

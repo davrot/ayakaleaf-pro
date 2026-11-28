@@ -1,5 +1,4 @@
 import { describe, it, expect } from 'vitest'
-import { validateEntry } from '../../../frontend/js/utils/bib-validate.ts'
 
 import {
   validateEntry,
