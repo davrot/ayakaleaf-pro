@@ -1014,11 +1014,6 @@ module.exports = {
     // Restart webpack after making changes.
     //
     createFileModes: [
-      // WYSIWYG TikZ editor: "New file > TikZ diagram" (.tikz)
-      Path.resolve(
-        __dirname,
-        '../modules/tikz/frontend/js/components/create-tikz-file'
-      ),
       Path.resolve(
         __dirname,
         '../modules/zotero/frontend/js/components/create-file-mode-zotero'
@@ -1027,14 +1022,25 @@ module.exports = {
         __dirname,
         '../modules/mendeley/frontend/js/components/create-file-mode-mendeley'
       ),
+      // WYSIWYG TikZ editor: "New file > TikZ diagram" (.tikz)
+      Path.resolve(
+        __dirname,
+        '../modules/tikz/frontend/js/components/create-tikz-file'
+      ),
       // drawio module: "New file > Diagram (draw.io)" (.drawio)
       Path.resolve(
         __dirname,
         '../modules/drawio/frontend/js/components/create-drawio-file'
       ),
     ],
+    // WYSIWYG TikZ editor: file-tree "Export to PNG/SVG/PDF" for .tikz/.pgf files
+    tikzFileExports: [
+      Path.resolve(
+        __dirname,
+        '../modules/tikz/frontend/js/util/tikz-export'
+      ),
+    ],
     devToolbar: [],
-<<<<<<< HEAD
     // bib-editor module: dashboard ds-nav Library item (hosted in
     // sidebar-ds-nav.tsx; renders the /library link with SaaS active state)
     dsNavLibraryLink:
@@ -1046,16 +1052,6 @@ module.exports = {
             ),
           ]
         : [],
-=======
-    // WYSIWYG TikZ editor: file-tree "Export to PNG/SVG/PDF" for .tikz/.pgf files
-    tikzFileExports: [
-      Path.resolve(
-        __dirname,
-        '../modules/tikz/frontend/js/util/tikz-export'
-      ),
-    ],
-    dsNavLibraryLink: [],
->>>>>>> drawtikz/drawio-tikz-editor
     trashPageTabs: [],
     adminUserLibrary: [],
     gitBridge: [],
@@ -1337,11 +1333,10 @@ module.exports = {
     v1ImportDataScreen: [],
     snapshotUtils: [],
     visualEditorProviders: [
-<<<<<<< HEAD
       Path.resolve(
         __dirname,
         '../modules/bib-editor/frontend/js/bib-editor-visual-provider.ts'
-=======
+      ),
       // WYSIWYG TikZ editor claims *.tikz / *.pgf (vendored app served
       // same-origin from public/static/tikz-editor, fully offline)
       Path.resolve(
@@ -1352,7 +1347,6 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/drawio/frontend/js/visual-editor-provider'
->>>>>>> drawtikz/drawio-tikz-editor
       ),
     ],
     usGovBanner: [],
@@ -1377,19 +1371,19 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
-<<<<<<< HEAD
-<<<<<<< HEAD
         '../modules/autoformatter/frontend/js/components/format-error-toast'
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/svgeditor/frontend/js/components/svg-convert-toasts'
->>>>>>> imgb/image-plugin-b
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/tikz/frontend/js/toastGenerators'
       ),
       Path.resolve(
         __dirname,
         '../modules/drawio/frontend/js/components/drawio-convert-toasts'
->>>>>>> drawtikz/drawio-tikz-editor
       ),
     ],
     editorSidebarComponents: [
@@ -1497,17 +1491,14 @@ module.exports = {
     railPopovers: [],
     railActions: [],
     railModals: [],
-<<<<<<< HEAD
     // Buttons rendered next to the download button in the file view header
-<<<<<<< HEAD
-    // (e.g. the "Edit Image" action from the toast-image module).
+    // (e.g. the "Edit Image" action from the toast-image module, the
+    // "Edit SVG" action from the svgeditor module).
     fileViewButtons: [
       Path.resolve(
         __dirname,
         '../modules/toast-image/frontend/js/components/toast-image-editor'
-=======
-    // (e.g. the "Edit SVG" action from the svgeditor module).
-    fileViewButtons: [
+      ),
       Path.resolve(
         __dirname,
         '../modules/svgeditor/frontend/js/components/svg-editor-button'
@@ -1519,15 +1510,10 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/svgeditor/frontend/js/components/svg-convert-menu-item'
->>>>>>> imgb/image-plugin-b
-=======
-    // Items appended to the file tree right-click (context) menu
-    // (e.g. draw.io -> PDF/PNG conversion from the drawio module).
-    fileTreeContextMenuItems: [
+      ),
       Path.resolve(
         __dirname,
         '../modules/drawio/frontend/js/components/drawio-convert-menu-item'
->>>>>>> drawtikz/drawio-tikz-editor
       ),
     ],
   },
@@ -1566,25 +1552,15 @@ module.exports = {
     'project-inspection',
     'instance-features',
     'open-in-overleaf',
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
     'latex-editor',
-    'user-emails',
     'wakatime',
     'instance-stats',
-=======
     'toast-image',
-=======
     'svgeditor',
->>>>>>> imgb/image-plugin-b
-=======
     'drawio',
->>>>>>> drawtikz/drawio-tikz-editor
-    'user-emails'
->>>>>>> imga/image-plugin-a
+    'tikz',
   ],
   wakatime: {
     // global on/off (routes + account-settings widget + editor heartbeats)

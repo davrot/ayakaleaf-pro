@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { useCallback, useMemo, useState } from 'react'
-=======
-import { useCallback } from 'react'
-import { ElementType, ComponentType } from 'react'
->>>>>>> imgb/image-plugin-b
-=======
-import { useCallback, useState } from 'react'
-import { ComponentType } from 'react'
->>>>>>> drawtikz/drawio-tikz-editor
+import { useCallback, useMemo, useState, ElementType, ComponentType } from 'react'
 import { useTranslation } from 'react-i18next'
 import * as eventTracking from '../../../../infrastructure/event-tracking'
 import { useProjectContext } from '@/shared/context/project-context'
@@ -24,30 +14,19 @@ import { useFileTreeSelectable } from '../../contexts/file-tree-selectable'
 import { findInTree } from '../../util/find-in-tree'
 import { duplicateFile } from '../../util/duplicate-file'
 import useIsNetworkStalled from '@/features/ide-react/hooks/use-is-network-stalled'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import {
   showFileDuplicated,
   showFileDuplicateError,
 } from '../file-tree-duplicate-toasts'
-=======
 import importOverleafModules from '../../../../../macros/import-overleaf-module.macro'
 
 // Context menu items contributed by modules (e.g. the SVG -> PDF/PNG
-// conversion actions of the svgeditor module). Each component returns null
-=======
-import importOverleafModules from '../../../../../macros/import-overleaf-module.macro'
-
-// Context menu items contributed by modules (e.g. the draw.io -> PDF/PNG
+// conversion actions of the svgeditor module, the draw.io -> PDF/PNG
 // conversion actions of the drawio module). Each component returns null
->>>>>>> drawtikz/drawio-tikz-editor
 // unless the currently selected file is one it handles.
 const fileTreeContextMenuItems = importOverleafModules(
   'fileTreeContextMenuItems'
 ) as { import: { default: ComponentType<any> }; path: string }[]
-<<<<<<< HEAD
->>>>>>> imgb/image-plugin-b
-=======
 
 type TikzFileExportApi = {
   formats: ('png' | 'svg' | 'pdf')[]
@@ -68,7 +47,6 @@ const tikzFileExportApis = importOverleafModules('tikzFileExports') as {
   path: string
 }[]
 const tikzFileExport = tikzFileExportApis[0]?.import?.default
->>>>>>> drawtikz/drawio-tikz-editor
 
 function FileTreeItemMenuItems() {
   const { t } = useTranslation()
@@ -90,11 +68,7 @@ function FileTreeItemMenuItems() {
     isDuplicate,
   } = useFileTreeActionable()
 
-<<<<<<< HEAD
   const { projectId, project } = useProjectContext()
-=======
-  const { project, projectId } = useProjectContext()
->>>>>>> drawtikz/drawio-tikz-editor
   const projectOwner = project?.owner?._id
   const [tikzExportBusy, setTikzExportBusy] = useState<string | null>(null)
 
@@ -238,8 +212,6 @@ function FileTreeItemMenuItems() {
           </OLDropdownItem>
         </li>
       ) : null}
-<<<<<<< HEAD
-<<<<<<< HEAD
       {canDuplicate ? (
         <li role="none">
           <OLDropdownItem
@@ -250,9 +222,7 @@ function FileTreeItemMenuItems() {
           </OLDropdownItem>
         </li>
       ) : null}
-=======
       {/* Module-provided actions for this file (e.g. SVG -> PDF/PNG). */}
-=======
       {tikzFileExport?.isExportable?.(selectedFileName) ? (
         <>
           <li role="none">
@@ -282,7 +252,6 @@ function FileTreeItemMenuItems() {
         </>
       ) : null}
       {/* Module-provided actions for this file (e.g. draw.io -> PDF/PNG). */}
->>>>>>> drawtikz/drawio-tikz-editor
       {fileTreeContextMenuItems.map(({ import: { default: MenuItem }, path }) => (
         <MenuItem
           key={path}
@@ -294,10 +263,6 @@ function FileTreeItemMenuItems() {
           }
         />
       ))}
-<<<<<<< HEAD
->>>>>>> imgb/image-plugin-b
-=======
->>>>>>> drawtikz/drawio-tikz-editor
       {canSetRootDocId ? (
         <>
           <OLDropdownDivider />

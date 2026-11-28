@@ -27,11 +27,8 @@ const tprFileViewNotOriginalImporter = importOverleafModules(
 }[]
 
 // Buttons rendered next to the download button in the file view header
-<<<<<<< HEAD
 // (e.g. the "Edit Image" action from the toast-image module).
-=======
 // (e.g. the "Edit SVG" action from the svgeditor module).
->>>>>>> imgb/image-plugin-b
 const fileViewButtons = importOverleafModules('fileViewButtons') as {
   import: { default: ElementType }
   path: string

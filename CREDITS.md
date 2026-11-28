@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # CREDITS
 
 This repository contains code taken from other projects, in addition to the
@@ -46,7 +45,6 @@ dependencies (this matches the layout in the upstream repository).
 Also note: the lezer parsers consumed by the module (`lezer-latex/latex.mjs`,
 `lezer-bibtex/bibtex.mjs`) are generated artifacts created by
 `yarn lezer-latex:generate` (already part of this fork's build).
-=======
 # Credits
 
 Third-party code included in this fork (on top of ShareLaTeX/Overleaf CE,
@@ -110,4 +108,3 @@ they stay out of the main IDE bundle.
 - The file-tree **Export to PNG/SVG/PDF** feature generates its artifacts
   from the editor's rendered output with no additional third-party
   libraries (PNG via canvas, PDF via a small built-in writer).
->>>>>>> drawtikz/drawio-tikz-editor
