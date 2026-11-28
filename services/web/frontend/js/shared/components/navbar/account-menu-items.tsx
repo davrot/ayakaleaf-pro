@@ -24,6 +24,7 @@ export function AccountMenuItems({
   const logOutFormId = 'logOutForm'
   const dsNavStyle = useDsNavStyle()
   const hasOverallThemes = Boolean(getMeta('ol-overallThemes'))
+  const wakaTimeEnabled = Boolean(getMeta('ol-ExposedSettings')?.wakaTimeEnabled)
 
   return (
     <>
@@ -48,6 +49,11 @@ export function AccountMenuItems({
       <NavDropdownLinkItem href="/user/keybind">
         {t('keybindings')}
       </NavDropdownLinkItem>
+      {wakaTimeEnabled ? (
+        <NavDropdownLinkItem href="/user/coding-statistics">
+          {t('wakapi_coding_statistics', { defaultValue: 'Coding statistics' })}
+        </NavDropdownLinkItem>
+      ) : null}
       {showSubscriptionLink ? (
         <NavDropdownLinkItem href="/user/subscription">
           {t('subscription')}

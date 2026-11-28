@@ -55,6 +55,8 @@ export type ExposedSettings = {
   labsEnabled: boolean
   wikiEnabled?: boolean
   templatesEnabled?: boolean
+  wakaTimeEnabled: boolean
+  wakaTimeDebugLogging?: boolean
   linkedInInsightsPartnerId?: string
   languageToolAvailable: boolean
   enablePandocConversions: boolean

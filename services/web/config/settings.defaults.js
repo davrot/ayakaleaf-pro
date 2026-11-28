@@ -1074,6 +1074,7 @@ module.exports = {
         __dirname,
         '../modules/error-assistant/frontend/js/last-fix-store'
       ),
+<<<<<<< HEAD
       // LanguageTool editor extension. Registered unconditionally: this list
       // is consumed at BUILD time by the import-overleaf-module babel macro
       // (webpack), so a build-environment flag would silently drop the chunk
@@ -1090,6 +1091,11 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/bib-editor/frontend/js/extensions/bib-editor-extension.ts'
+=======
+      Path.resolve(
+        __dirname,
+        '../modules/wakatime/frontend/js/editor/wakatime-source-editor-extension.ts'
+>>>>>>> wakatime/wakatime
       ),
     ],
     sourceEditorVisualExtensions: [],
@@ -1204,7 +1210,11 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
+<<<<<<< HEAD
         '../modules/webdav/frontend/js/components/webdav-widget.tsx'
+=======
+        '../modules/wakatime/frontend/js/components/wakatime-widget.tsx'
+>>>>>>> wakatime/wakatime
       ),
     ],
     referenceLinkingWidgets: [
@@ -1392,6 +1402,10 @@ module.exports = {
         __dirname,
         '../modules/mendeley/frontend/js/components/mendeley-integration-card.tsx'
       ),
+      Path.resolve(
+        __dirname,
+        '../modules/wakatime/frontend/js/components/wakatime-integration-card.tsx'
+      ),
     ],
     referenceSearchSetting: [],
     settingsModalEditorTabSections: [],
@@ -1474,10 +1488,55 @@ module.exports = {
     'project-inspection',
     'instance-features',
     'open-in-overleaf',
+<<<<<<< HEAD
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
     'latex-editor',
+=======
+    'user-emails',
+    'wakatime',
+>>>>>>> wakatime/wakatime
   ],
+  wakatime: {
+    // global on/off (routes + account-settings widget + editor heartbeats)
+    enabled: process.env.WAKATIME_ENABLED !== 'false',
+    debugLogging: process.env.WAKATIME_DEBUG_LOGGING === 'true',
+    // SSRF guard for the user-supplied WakaTime/Wakapi API URL (the
+    // "Use an API key" form): by default loopback names and IP literals
+    // in private/link-local/reserved/multicast/CGNAT ranges are rejected
+    // at link time and on every request, so a linked account can never
+    // make the backend fetch internal addresses. Set
+    // WAKATIME_ALLOW_INTERNAL_HOSTS=true to trust every host (e.g. a
+    // self-hosted Wakapi on the internal network), or list specific
+    // host / host:port entries in WAKATIME_ALLOWED_API_HOSTS (comma
+    // separated) to allow them by name.
+    allowInternalHosts: process.env.WAKATIME_ALLOW_INTERNAL_HOSTS === 'true',
+    allowedHosts: (process.env.WAKATIME_ALLOWED_API_HOSTS || '')
+      .split(',')
+      .map(s => s.trim().toLowerCase())
+      .filter(Boolean),
+    // WakaTime.com OAuth2 (optional; empty clientId disables the
+    // "Connect with WakaTime" button). Create an app on wakatime.com and
+    // register WAKATIME_OAUTH_REDIRECT_URI as an authorized redirect URI.
+    oauth: {
+      clientId: process.env.WAKATIME_OAUTH_CLIENT_ID || '',
+      clientSecret: process.env.WAKATIME_OAUTH_CLIENT_SECRET || '',
+      redirectUri:
+        process.env.WAKATIME_OAUTH_REDIRECT_URI ||
+        `${process.env.OVERLEAF_SITE_URL || ''}/user/wakatime/oauth/callback`.replace(
+          /\/$/,
+          ''
+        ),
+      authorizeUrl:
+        process.env.WAKATIME_OAUTH_AUTHORIZE_URL ||
+        'https://wakatime.com/oauth/authorize',
+      tokenUrl:
+        process.env.WAKATIME_OAUTH_TOKEN_URL || 'https://wakatime.com/oauth/token',
+      scope: process.env.WAKATIME_OAUTH_SCOPE || 'read_summaries,write_heartbeats',
+      // API base URL used for a wakatime.com-linked account
+      apiBaseUrl: process.env.WAKATIME_OAUTH_API_BASE_URL || 'https://wakatime.com/api/v1',
+    },
+  },
   viewIncludes: {},
 
   csp: {
