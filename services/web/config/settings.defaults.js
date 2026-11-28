@@ -1324,6 +1324,7 @@ module.exports = {
     usGovBanner: [],
     rollingBuildsUpdatedAlert: [],
     offlineModeToolbarButtons: [],
+    settingsEntries: [],
     autoCompleteExtensions: [
       Path.resolve(
         __dirname,
