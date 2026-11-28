@@ -1,4 +1,4 @@
-import type { SystemMessage } from '../../../types/system-message'
+import type { SystemMessage } from '../../../../types/system-message'
 
 /**
  * #17b (port from go experimental branch, adapted): per-message placement.
