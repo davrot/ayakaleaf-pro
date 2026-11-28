@@ -1451,6 +1451,14 @@ module.exports = {
     railPopovers: [],
     railActions: [],
     railModals: [],
+    // Buttons rendered next to the download button in the file view header
+    // (e.g. the "Edit Image" action from the toast-image module).
+    fileViewButtons: [
+      Path.resolve(
+        __dirname,
+        '../modules/toast-image/frontend/js/components/toast-image-editor'
+      ),
+    ],
   },
 
   moduleImportSequence: [
@@ -1487,12 +1495,17 @@ module.exports = {
     'project-inspection',
     'instance-features',
     'open-in-overleaf',
+<<<<<<< HEAD
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
     'latex-editor',
     'user-emails',
     'wakatime',
     'instance-stats',
+=======
+    'toast-image',
+    'user-emails'
+>>>>>>> imga/image-plugin-a
   ],
   wakatime: {
     // global on/off (routes + account-settings widget + editor heartbeats)

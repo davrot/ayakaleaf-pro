@@ -3161,6 +3161,7 @@
   "zotero_sync_up_to_date": "",
   "zotero_upgrade_prompt_content": "",
   "zotero_upgrade_prompt_title": "",
+<<<<<<< HEAD
   "Link your Zotero account to import references": {
     "Link your Zotero account to import references": "Link your Zotero account to import references"
   },
@@ -3192,4 +3193,18 @@
   "failed_to_link_dropbox": true,
   "failed_to_unlink_dropbox": true,
   "your_username": true
+=======
+  "edit_image": "",
+  "discard": "",
+  "keep_editing": "",
+  "retry": "",
+  "unsaved_image_changes": "",
+  "image_edit_failed": "",
+  "image_edit_upload_failed": "",
+  "image_edit_upload_read_failed": "",
+  "image_edit_backstop": "",
+  "image_edit_open_original": "",
+  "image_edit_loading": "",
+  "image_edit_save_hint": ""
+>>>>>>> imga/image-plugin-a
 }

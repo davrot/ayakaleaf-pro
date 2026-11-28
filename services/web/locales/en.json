@@ -4026,5 +4026,17 @@
   "dropbox_push_failed": "Failed to export to Dropbox: __fallback__",
   "failed_to_link_dropbox": "Failed to link project to Dropbox: __error__",
   "failed_to_unlink_dropbox": "Failed to unlink project from Dropbox: __fallback__",
-  "your_username": "your-username"
+  "your_username": "your-username",
+  "edit_image": "Edit Image",
+  "discard": "Discard",
+  "keep_editing": "Keep editing",
+  "retry": "Retry",
+  "unsaved_image_changes": "You have unsaved image edits. Discard them?",
+  "image_edit_failed": "Failed to edit the image",
+  "image_edit_upload_failed": "Upload failed: {{status}}",
+  "image_edit_upload_read_failed": "Could not read the edited image ({{status}})",
+  "image_edit_backstop": "The image editor could not be initialized. You can still open the original image.",
+  "image_edit_open_original": "Open original image",
+  "image_edit_loading": "Loading the image editor…",
+  "image_edit_save_hint": "Use the Save button in the editor toolbar to apply your changes."
 }
