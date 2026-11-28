@@ -70,6 +70,8 @@ nav.navbar.navbar-default.navbar-main.navbar-expand-lg(
 									if canDisplayLlmAdminMenu
 										+dropdown-menu-link-item(href='/admin/llm/settings') Manage LLM
 									+dropdown-menu-link-item(href='/admin/messages') System Messages
+								if settings.instanceStats && settings.instanceStats.enabled
+									+dropdown-menu-link-item(href='/admin/instance-stats') Instance Statistics
 								if canDisplayProjectUrlLookup
 									+dropdown-menu-link-item(href='/admin/project') Project/Object Lookup
 								if canDisplayAdminRedirect

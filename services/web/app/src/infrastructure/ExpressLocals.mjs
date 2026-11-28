@@ -428,14 +428,11 @@ export default async function (webRouter, privateApiRouter, publicApiRouter) {
       enableProjectInspection: !!Settings.projectInspection?.enable,
       mixpanelLabsToken:
         Settings.labs?.enable && Settings.analytics?.mixpanel?.labsToken,
-<<<<<<< HEAD
       llmAllowUserSettings: Settings.llm?.allowUserSettings ?? false,
       llmEnabled: Settings.llm?.enabled ?? false,
-=======
       // WakaTime activity tracking (module: services/web/modules/wakatime)
       wakaTimeEnabled: Settings.wakatime?.enabled !== false,
       wakaTimeDebugLogging: !!Settings.wakatime?.debugLogging,
->>>>>>> wakatime/wakatime
     }
     next()
   })

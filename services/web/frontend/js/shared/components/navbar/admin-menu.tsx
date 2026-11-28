@@ -11,6 +11,7 @@ export default function AdminMenu({
   canDisplaySurveyMenu,
   canDisplayScriptLogMenu,
   canDisplayLlmAdminMenu,
+  canDisplayInstanceStats,
   adminUrl,
 }: Pick<
   DefaultNavbarMetadata,
@@ -21,6 +22,7 @@ export default function AdminMenu({
   | 'canDisplaySurveyMenu'
   | 'canDisplayScriptLogMenu'
   | 'canDisplayLlmAdminMenu'
+  | 'canDisplayInstanceStats'
   | 'adminUrl'
 >) {
   const sendProjectListMB = useSendProjectListMB()
@@ -54,6 +56,11 @@ export default function AdminMenu({
           <NavDropdownLinkItem href="/admin/messages">
             System Messages
           </NavDropdownLinkItem>
+          {canDisplayInstanceStats ? (
+            <NavDropdownLinkItem href="/admin/instance-stats">
+              Instance Statistics
+            </NavDropdownLinkItem>
+          ) : null}
         </>
       ) : null}
       {canDisplayProjectUrlLookup ? (

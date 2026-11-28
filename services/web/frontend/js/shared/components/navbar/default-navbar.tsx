@@ -31,6 +31,7 @@ function DefaultNavbar(
     canDisplaySurveyMenu,
     canDisplayScriptLogMenu,
     canDisplayLlmAdminMenu,
+    canDisplayInstanceStats,
     enableUpgradeButton,
     suppressNavbarRight,
     suppressNavContentLinks,
@@ -119,6 +120,7 @@ function DefaultNavbar(
                       canDisplaySurveyMenu={canDisplaySurveyMenu}
                       canDisplayScriptLogMenu={canDisplayScriptLogMenu}
                       canDisplayLlmAdminMenu={canDisplayLlmAdminMenu}
+                      canDisplayInstanceStats={canDisplayInstanceStats}
                       adminUrl={adminUrl}
                     />
                   ) : null}

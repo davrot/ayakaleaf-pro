@@ -1074,7 +1074,6 @@ module.exports = {
         __dirname,
         '../modules/error-assistant/frontend/js/last-fix-store'
       ),
-<<<<<<< HEAD
       // LanguageTool editor extension. Registered unconditionally: this list
       // is consumed at BUILD time by the import-overleaf-module babel macro
       // (webpack), so a build-environment flag would silently drop the chunk
@@ -1091,11 +1090,10 @@ module.exports = {
       Path.resolve(
         __dirname,
         '../modules/bib-editor/frontend/js/extensions/bib-editor-extension.ts'
-=======
+      ),
       Path.resolve(
         __dirname,
         '../modules/wakatime/frontend/js/editor/wakatime-source-editor-extension.ts'
->>>>>>> wakatime/wakatime
       ),
     ],
     sourceEditorVisualExtensions: [],
@@ -1210,11 +1208,11 @@ module.exports = {
       ),
       Path.resolve(
         __dirname,
-<<<<<<< HEAD
         '../modules/webdav/frontend/js/components/webdav-widget.tsx'
-=======
+      ),
+      Path.resolve(
+        __dirname,
         '../modules/wakatime/frontend/js/components/wakatime-widget.tsx'
->>>>>>> wakatime/wakatime
       ),
     ],
     referenceLinkingWidgets: [
@@ -1488,14 +1486,12 @@ module.exports = {
     'project-inspection',
     'instance-features',
     'open-in-overleaf',
-<<<<<<< HEAD
     'bib-editor', // visual .bib editor + user Library (pages/routes/API + vendored ORCID/Zotero pickers)
     'user-emails',
     'latex-editor',
-=======
     'user-emails',
     'wakatime',
->>>>>>> wakatime/wakatime
+    'instance-stats',
   ],
   wakatime: {
     // global on/off (routes + account-settings widget + editor heartbeats)
